@@ -288,7 +288,7 @@ button.li:hover{background:rgba(35,25,24,.04)}
 .bal{border-radius:28px;padding:18px;background:var(--p) var(--patr) -40px -20px/520px auto;color:#fff}
 .bal .row{display:flex;justify-content:space-between;align-items:flex-start}
 .bal .big{font-size:44px;font-weight:500;letter-spacing:-.03em;line-height:1.05;margin-top:2px}
-.ypb{width:38px;height:38px;border-radius:12px;background:var(--yape);color:#fff;display:grid;place-items:center;font-weight:800;font-size:11px;letter-spacing:-.02em;flex:none}
+.ypb{width:38px;height:38px;border-radius:12px;background:var(--yape,#7042C7);color:#fff;display:grid;place-items:center;font-weight:800;font-size:11px;letter-spacing:-.02em;flex:none}
 .chart{display:grid;grid-template-columns:repeat(7,1fr);gap:8px;align-items:end;height:96px;margin-top:16px}
 .chart div{display:flex;flex-direction:column;align-items:center;gap:6px;height:100%;justify-content:flex-end;font-size:11px;color:rgba(255,255,255,.75)}
 .chart i{width:100%;border-radius:8px;background:rgba(255,255,255,.9);transform-origin:bottom;animation:grow .7s cubic-bezier(.2,.8,.2,1) both}
@@ -1947,11 +1947,14 @@ function buildPage() {
   $('#heroBlobs').innerHTML = `<span class="bl b1"><svg viewBox="0 0 100 100"><path d="${shapePath('cookie9')}" fill="var(--t1)"/></svg></span><span class="bl b2"><svg viewBox="0 0 100 100"><path d="${shapePath('flower')}" fill="var(--t3)"/></svg></span><span class="bl b3"><svg viewBox="0 0 100 100"><path d="${shapePath('stepd')}" fill="var(--t2)"/></svg></span>`;
 }
 function setLang(l) {
+  const keepY = window.scrollY;
   L = l; try { localStorage.setItem('arriba-lang', l); } catch (e) {}
   document.documentElement.lang = l;
   $$('.g-seg button').forEach(b => b.setAttribute('aria-pressed', b.dataset.lang === l));
   buildPage(); filmBuild(); observeReveal(); paintJump();
   if (S.cur) { const o = $('#ov').classList.contains('on'); refresh(); if (o) closeOvSilent(); }
+  const hold = () => { if (Math.abs(window.scrollY - keepY) > 4) window.scrollTo({ top: keepY, behavior: 'instant' }); };
+  hold(); requestAnimationFrame(hold); setTimeout(hold, 120);
 }
 let rvObs;
 function observeReveal() {
