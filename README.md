@@ -1,7 +1,7 @@
 # Arriba Perú
 
 A co-designed mobile platform bringing safety, clarity and opportunity to Peru’s domestic workers.
-Bilingual (English / Español) hi-fi prototype by **Matias Indacochea** — Syracuse University, Industrial & Interaction Design capstone, 2026.
+Bilingual (English / Español) hi-fi prototype designed by **Matias Indacochea**, 2025–26.
 
 ## What’s here
 
